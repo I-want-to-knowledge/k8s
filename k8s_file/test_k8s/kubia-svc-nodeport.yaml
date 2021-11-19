@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-nodeport
+spec:
+  type: NodePort
+  ports:
+  - name: http1
+    port: 7975
+    targetPort: 8080
+    nodePort: 30123 #curl http://localhost:30123 节点ip加端口访问，对外开放端口，svc不能直接ping通，需要nodeport支持
+  selector:
+    app: kubia

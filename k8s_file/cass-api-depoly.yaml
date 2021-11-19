@@ -1,0 +1,489 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "3"
+  creationTimestamp: "2021-09-26T09:58:14Z"
+  generation: 504491
+  labels:
+    app: caas-api
+    belongTo: installer-operator
+    creator: ecp
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+          f:belongTo: {}
+          f:creator: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"cc88283d-5024-4cce-9cee-e73ba645858a"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:loki/logdir: {}
+            f:labels:
+              .: {}
+              f:app: {}
+              f:belongTo: {}
+              f:creator: {}
+          f:spec:
+            f:affinity:
+              .: {}
+              f:podAffinity:
+                .: {}
+                f:preferredDuringSchedulingIgnoredDuringExecution: {}
+            f:containers:
+              k:{"name":"caas-api"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"JAVA_OPTS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"aliyun_logs_logstash"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"aliyun_logs_logstash_tags"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:lifecycle:
+                  .: {}
+                  f:postStart:
+                    .: {}
+                    f:exec:
+                      .: {}
+                      f:command: {}
+                f:livenessProbe:
+                  .: {}
+                  f:failureThreshold: {}
+                  f:httpGet:
+                    .: {}
+                    f:path: {}
+                    f:port: {}
+                    f:scheme: {}
+                  f:initialDelaySeconds: {}
+                  f:periodSeconds: {}
+                  f:successThreshold: {}
+                  f:timeoutSeconds: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":8088,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:readinessProbe:
+                  .: {}
+                  f:failureThreshold: {}
+                  f:httpGet:
+                    .: {}
+                    f:path: {}
+                    f:port: {}
+                    f:scheme: {}
+                  f:initialDelaySeconds: {}
+                  f:periodSeconds: {}
+                  f:successThreshold: {}
+                  f:timeoutSeconds: {}
+                f:resources:
+                  .: {}
+                  f:limits:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                  f:requests:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/etc/localtime"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                  k:{"mountPath":"/logs"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                  k:{"mountPath":"/usr/local/caas-api"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                  k:{"mountPath":"/usr/local/caas-api/admin-config/datacenter--cluster-local"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                  k:{"mountPath":"/usr/local/conf/application.properties"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:subPath: {}
+                  k:{"mountPath":"/usr/local/conf/file-upload-deployment.yaml"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:subPath: {}
+                  k:{"mountPath":"/usr/local/conf/kok.yml"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:subPath: {}
+                  k:{"mountPath":"/usr/local/conf/star.yml"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:subPath: {}
+                  k:{"mountPath":"/var/run"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"caas-api-config"}:
+                .: {}
+                f:configMap:
+                  .: {}
+                  f:defaultMode: {}
+                  f:items: {}
+                  f:name: {}
+                f:name: {}
+              k:{"name":"caas-api-dependency-config"}:
+                .: {}
+                f:configMap:
+                  .: {}
+                  f:defaultMode: {}
+                  f:items: {}
+                  f:name: {}
+                f:name: {}
+              k:{"name":"caas-api-kok-config"}:
+                .: {}
+                f:configMap:
+                  .: {}
+                  f:defaultMode: {}
+                  f:items: {}
+                  f:name: {}
+                f:name: {}
+              k:{"name":"caas-api-star-config"}:
+                .: {}
+                f:configMap:
+                  .: {}
+                  f:defaultMode: {}
+                  f:items: {}
+                  f:name: {}
+                f:name: {}
+              k:{"name":"caas-api-storage"}:
+                .: {}
+                f:name: {}
+                f:persistentVolumeClaim:
+                  .: {}
+                  f:claimName: {}
+              k:{"name":"docker"}:
+                .: {}
+                f:hostPath:
+                  .: {}
+                  f:path: {}
+                  f:type: {}
+                f:name: {}
+              k:{"name":"host-time"}:
+                .: {}
+                f:hostPath:
+                  .: {}
+                  f:path: {}
+                  f:type: {}
+                f:name: {}
+              k:{"name":"kube"}:
+                .: {}
+                f:name: {}
+                f:secret:
+                  .: {}
+                  f:defaultMode: {}
+                  f:items: {}
+                  f:secretName: {}
+              k:{"name":"logdirwebapi"}:
+                .: {}
+                f:emptyDir: {}
+                f:name: {}
+    manager: manager
+    operation: Update
+    time: "2021-10-12T01:29:50Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:replicas: {}
+        f:template:
+          f:spec:
+            f:containers:
+              k:{"name":"caas-api"}:
+                f:image: {}
+                f:imagePullPolicy: {}
+            f:nodeName: {}
+    manager: kubectl-edit
+    operation: Update
+    time: "2021-10-14T12:23:04Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          k:{"type":"Available"}:
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+          k:{"type":"Progressing"}:
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2021-10-18T07:48:00Z"
+  name: caas-api
+  namespace: caas-system
+  ownerReferences:
+  - apiVersion: installer.alibabacloud.com/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: EcpComponent
+    name: caas-api
+    uid: cc88283d-5024-4cce-9cee-e73ba645858a
+  resourceVersion: "87431560"
+  selfLink: /apis/apps/v1/namespaces/caas-system/deployments/caas-api
+  uid: b278aee7-108a-45aa-9e1d-5f7315385b35
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: caas-api
+      belongTo: installer-operator
+      creator: ecp
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        loki/logdir: logdirwebapi/*.log
+      creationTimestamp: null
+      labels:
+        app: caas-api
+        belongTo: installer-operator
+        creator: ecp
+    spec:
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - caas-api
+              namespaces:
+              - caas-system
+              topologyKey: kubernetes.io/hostname
+            weight: 50
+      containers:
+      - env:
+        - name: JAVA_OPTS
+          value: -Xmx2048m -Dspring.config.location=/usr/local/conf/application.properties,/usr/local/conf/kok.yml,/usr/local/conf/star.yml
+        - name: aliyun_logs_logstash
+          value: /logs/*
+        - name: aliyun_logs_logstash_tags
+          value: k8s_resource_type=Deployment,k8s_resource_name=caas-api
+        image: caas-api:test ###################################################################################查找镜像名为caas-api:test
+        imagePullPolicy: IfNotPresent ##########################################################################查找镜像在本地是否存在
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - if [ ! -d '/usr/local/caas-api/fsfiles/hcdb' ]; then cp -r /usr/local/caas-api-pv/hcdb
+                /usr/local/caas-api/fsfiles/ ;fi ; if [ ! -d '/usr/local/caas-api/fsfiles/images'
+                ]; then cp -r /usr/local/caas-api-pv/images /usr/local/caas-api/fsfiles/
+                ;fi ; if [ ! -d '/usr/local/caas-api/fsfiles/libpty' ]; then cp -r
+                /usr/local/caas-api-pv/libpty /usr/local/caas-api/fsfiles/ ;fi ; if
+                [ ! -d '/usr/local/caas-api/fsfiles/shell' ]; then cp -r /usr/local/caas-api-pv/shell
+                /usr/local/caas-api/fsfiles/ ;fi ;
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /openapi/healthy
+            port: 8088
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: caas-api
+        ports:
+        - containerPort: 8088
+          name: api
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /openapi/healthy
+            port: 8088
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: "2"
+            memory: 2Gi
+          requests:
+            cpu: "2"
+            memory: 2Gi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /usr/local/conf/application.properties
+          name: caas-api-config
+          subPath: application.properties
+        - mountPath: /usr/local/conf/kok.yml
+          name: caas-api-kok-config
+          subPath: kok.yml
+        - mountPath: /usr/local/conf/star.yml
+          name: caas-api-star-config
+          subPath: star.yml
+        - mountPath: /usr/local/conf/file-upload-deployment.yaml
+          name: caas-api-dependency-config
+          subPath: file-upload-deployment.yaml
+        - mountPath: /var/run
+          name: docker
+        - mountPath: /logs
+          name: logdirwebapi
+        - mountPath: /usr/local/caas-api
+          name: caas-api-storage
+        - mountPath: /etc/localtime
+          name: host-time
+        - mountPath: /usr/local/caas-api/admin-config/datacenter--cluster-local
+          name: kube
+      dnsPolicy: ClusterFirst
+      nodeName: izhp38ogpo2wc8agcppfdqz ############################################################设置只运行在izhp38ogpo2wc8agcppfdqz节点
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: application.properties
+            path: application.properties
+          name: caas-api-config
+        name: caas-api-config
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: kok.yml
+            path: kok.yml
+          name: caas-api-kok-config
+        name: caas-api-kok-config
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: file-upload-deployment.yaml
+            path: file-upload-deployment.yaml
+          name: caas-api-dependency-config
+        name: caas-api-dependency-config
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: star.yml
+            path: star.yml
+          name: caas-api-star-config
+        name: caas-api-star-config
+      - hostPath:
+          path: /var/run
+          type: ""
+        name: docker
+      - emptyDir: {}
+        name: logdirwebapi
+      - name: caas-api-storage
+        persistentVolumeClaim:
+          claimName: caas-api-claim
+      - hostPath:
+          path: /etc/localtime
+          type: ""
+        name: host-time
+      - name: kube
+        secret:
+          defaultMode: 256
+          items:
+          - key: cluster-local-config
+            path: config
+          secretName: cluster-local.config
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2021-10-14T12:23:04Z"
+    lastUpdateTime: "2021-10-14T12:23:36Z"
+    message: ReplicaSet "caas-api-d757849c8" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2021-10-18T07:48:00Z"
+    lastUpdateTime: "2021-10-18T07:48:00Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 504491
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

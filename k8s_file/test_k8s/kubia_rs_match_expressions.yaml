@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubia
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: yanzhen0/kubia
+        readinessProbe:
+          exec:
+            command:
+            - ls
+            - /var/ready
+        ports:
+        - containerPort: 8080
