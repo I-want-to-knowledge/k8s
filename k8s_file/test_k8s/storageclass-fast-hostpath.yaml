@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast
+provisioner: k8s.io/minikube-hostpath # 配置持久卷插件
+parameters:
+  type: pd-ssd
+  zone: europe-west1-b
