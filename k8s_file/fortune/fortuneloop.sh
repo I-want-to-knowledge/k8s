@@ -10,5 +10,6 @@ do
 	# shellcheck disable=SC2046
 	echo $(date) Writing fortune to /var/htdocs/index.html
 	/usr/games/fortune > /var/htdocs/index.html
+	echo "ENV = $INTERVAL" # 添加环境变量查询
 	sleep $v
 done
