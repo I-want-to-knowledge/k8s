@@ -1,3 +1,3 @@
 FROM node:7
-ADD app.js /Users/yanzhen/testUse/testGo/app.js
-ENTRYPOINT ["node", "/Users/yanzhen/testUse/testGo/app.js"]
+ADD app.js /Users/yanzhen/IdeaProjects/k8s/k8s_file/test-js/app.js
+ENTRYPOINT ["node", "/Users/yanzhen/IdeaProjects/k8s/k8s_file/test-js/app.js"]
