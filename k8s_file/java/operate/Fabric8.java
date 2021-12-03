@@ -10,7 +10,7 @@ import io.fabric8.kubernetes.client.KubernetesClient;
 import java.util.Arrays;
 
 /**
- * java 对pod的正删改查
+ * java 对pod的增删改查
  *
  * @author YanZhen
  * @date 2021/12/01 09:15
