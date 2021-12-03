@@ -1,0 +1,34 @@
+# kubectl create -f deploy-kubia-deployment-v1.yaml --record
+# 使用--record，可以记录历史版本号
+# 执行 kubectl apply -f kubia-deployment-v3-with-readinesscheck.yaml 会覆盖原有的deploy类型的kubia
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia
+spec:
+  selector:
+    matchLabels:
+      app: kubia
+  replicas: 3
+  revisionHistoryLimit: 3 # 保留replicaSet的版本数量
+  minReadySeconds: 10 # 滚动升级时，10秒升级一次
+  strategy:
+    rollingUpdate:
+      maxSurge: 1 # 最多允许超出pod数量
+      maxUnavailable: 0 # 允许多少个pod不可用
+    type: RollingUpdate # 滚动升级，也是默认值
+  template:
+    metadata:
+      name: kubia
+      labels:
+        app: kubia
+    spec:
+      containers:
+        - name: nodejs
+          image: yanzhen0/kubia:v3-error # 模拟5次请求报500异常； 触发滚动升级--> kubectl set image deploy kubia nodejs=yanzhen0/kubia:v2
+          readinessProbe: # 定义探针
+            periodSeconds: 1 # 探针每1秒执行一次
+            httpGet: # 探针执行http get请求到容器的8080端口
+              port: 8080
+              path: /
+
