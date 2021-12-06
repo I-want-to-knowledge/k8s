@@ -16,7 +16,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 1 # 最多允许超出pod数量
-      maxUnavailable: 1 # 允许多少个pod不可用
+      maxUnavailable: 0 # 允许多少个pod不可用
     type: RollingUpdate # 滚动升级，也是默认值
   template:
     metadata:
