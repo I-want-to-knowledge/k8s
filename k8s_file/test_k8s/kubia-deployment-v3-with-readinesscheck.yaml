@@ -12,10 +12,11 @@ spec:
   replicas: 3
   revisionHistoryLimit: 3 # 保留replicaSet的版本数量
   minReadySeconds: 10 # 滚动升级时，10秒升级一次
+  progressDeadlineSeconds: 600 # 十分钟为成功升级，自动取消
   strategy:
     rollingUpdate:
       maxSurge: 1 # 最多允许超出pod数量
-      maxUnavailable: 0 # 允许多少个pod不可用
+      maxUnavailable: 1 # 允许多少个pod不可用
     type: RollingUpdate # 滚动升级，也是默认值
   template:
     metadata:
