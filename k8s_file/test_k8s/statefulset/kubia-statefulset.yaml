@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kubia
+spec:
+  selector:
+    matchLabels:
+      app: kubia
+  serviceName: kubia
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+        - name: kubia
+#          image: yanzhen0/kubia-pet # 普通存储数据和响应数据的pod
+          image: yanzhen0/kubia-pet-peers # 存储数据和响应所有同伴pod的pod
+          ports:
+            - containerPort: 8080
+          volumeMounts: # pod中的容器会把pvc数据卷嵌入指定目录
+            - mountPath: /var/data
+              name: data
+  volumeClaimTemplates: # 持久卷声明模版
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 1Mi
+        accessModes:
+          - ReadWriteOnce
+
