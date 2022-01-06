@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-add-settime-capability
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command:
+        - /bin/sleep
+        - '999999'
+      securityContext:
+        capabilities: # 添加禁用内核功能，查阅Linux的内核功能
+          add:
+            - SYS_TIME # 添加了SYS_TIME功能，pod的spec中'CAP_'需要省略，   kubectl exec -it pod-add-settime-capability -- date +%T -s "12:00:00"

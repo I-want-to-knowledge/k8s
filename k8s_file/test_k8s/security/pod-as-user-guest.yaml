@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user-guest
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command:
+        - /bin/sleep
+        - '999999'
+      securityContext:
+#        runAsUser: 405 # 指明一个用户ID，而不是用户名（id 405对应guest）
+        runAsNonRoot: true # 不允许root用户运行

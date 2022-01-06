@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-privileged
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command:
+        - /bin/sleep
+        - '999999'
+      securityContext:
+        privileged: true # 容器将在特权模式下运行，特权模式和非特权模式exec查看/dev目录下的文件即可看出，特权模式可以看到宿主节点上的所有设备；

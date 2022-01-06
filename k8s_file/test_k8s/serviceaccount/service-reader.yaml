@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: foo
+  name: service-reader # kubectl create rolebinding test --role=service-reader --serviceaccount=foo:default -n foo
+rules:
+  - apiGroups:
+      - "" # Service是核心apiGroup的资源，所以没有apiGroup名，就是""
+    verbs: # 获取独立的service并且列出所有允许的服务
+      - get
+      - list
+    resources: # 这条规则和服务有关（必须使用复数的名字）
+      - services
