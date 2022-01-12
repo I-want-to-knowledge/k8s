@@ -1,0 +1,25 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: default
+spec:
+  hostIPC: false # 容器不允许使用宿主节点的IPD、PID和网络命名空间
+  hostPID: false
+  hostNetwork: false
+  hostPorts: # 容器只能绑定宿主节点的10000-11000端口或13000-14000端口
+    - min: 10000
+      max: 11000
+    - min: 13000
+      max: 14000
+  privileged: false #容器不能在特权模式下运行
+  readOnlyRootFilesystem: true
+  fsGroup: # 容器可以以任意用户和用户组运行
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  seLinux: # 他们也可以使用任何SELinux选项
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  volumes: # pod可以使用所有类型的存储卷
+    - '*'

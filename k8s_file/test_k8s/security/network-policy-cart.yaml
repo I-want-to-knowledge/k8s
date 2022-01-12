@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy # 隔离pod的网络
+metadata:
+  name: shoppingcart-netpolicy
+spec:
+  podSelector: # 策略用于有app: shopping-cart标签的pod
+    matchLabels:
+      app: shopping-cart
+  ingress: # 只允许来自具有tenant: manning标签的namespace的pod可以访问
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              tenant: manning
+    - ports: # 允许对端口访问
+        - port: 80

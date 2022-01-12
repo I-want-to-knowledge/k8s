@@ -1,0 +1,6 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy # 隔离pod的网络
+metadata:
+  name: default-deny
+spec:
+  podSelector: {}

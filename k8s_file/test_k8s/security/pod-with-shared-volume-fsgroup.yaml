@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-shared-volume-fsgroup
+spec:
+  securityContext: # fsGroup和supplementalGroups在pod级别的安全上下文中定义
+    fsGroup: 555
+    supplementalGroups:
+      - 666
+      - 777
+  containers:
+    - name: first
+      image: alpine
+      command:
+        - /bin/sleep
+        - '999999'
+      securityContext:
+        runAsUser: 1111 # 第一个容器使用用户为1111
+      volumeMounts: # 向/volume写入是允许的
+        - mountPath: /volume
+          name: shared-volume
+          readOnly: false
+    - name: second
+      image: alpine
+      command:
+        - /bin/sleep
+        - '999999'
+      securityContext:
+        runAsUser: 2222
+      volumeMounts:
+        - mountPath: /volume
+          name: shared-volume
+          readOnly: false
+  volumes:
+    - name: shared-volume
+      emptyDir: {}
