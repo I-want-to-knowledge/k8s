@@ -45,3 +45,9 @@ spec:
             resourceFieldRef:
               resource: limits.memory
               divisor: 1Ki
+        - name: mysql_username # 环境变量名
+          valueFrom:
+            secretKeyRef: # 引用secret中名字叫caas-mysql的文件，文件中data字段存储的username的值（base64）
+              key: username
+              name: caas-mysql
+              optional: false

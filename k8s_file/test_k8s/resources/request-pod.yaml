@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: request-pod
+spec:
+  containers:
+    - name: main
+      image: busybox
+      command:
+        - dd
+        - if=/dev/zero
+        - of=/dev/null
+      resources:
+        # QoS配置：（QoS等级确定内存不足时哪个进程会被杀死）
+        #   当pod的所有容器未配置requests和limits时是最低级别BestEffort；
+        #   当pod的所有容器都配置requests和limits，且两个值都相同时是最高级别为Guaranteed；
+        #   前两个以外的配置都是Burstable（属于中间等级）；
+        # 注意：pod的容器之间也有QoS等级
+        # 注意：内存实际使用量/申请量 的值越高越容易被杀死；
+        # 注意：OOM分数=（已消耗内存占可用内存百分比）* OOM分数调节因子
+        requests:
+          cpu: 200m
+          memory: 10Mi
+        limits:
+          cpu: 1c
+          memory: 20Mi

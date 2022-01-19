@@ -5,8 +5,8 @@ metadata:
 rules:
   - apiGroups:
       - ""
-    resources:
+    resources: # 根据verbs值，可以查看和列表pv
       - persistentvolumes
-    verbs:
+    verbs: # get, list, create, update, patch, watch, delete, deletecollection
       - get
       - list
