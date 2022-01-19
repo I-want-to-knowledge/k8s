@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-port-from-namespace
+  namespace: yz-t
+spec:
+  podSelector: # 隔离所有pod
+    matchLabels: {}
+  policyTypes: # 隔离策略类型
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: {}
+      ports: # 允许yz-t命名空间的pod访问该pod的9200端口
+        - protocol: TCP
+          port: 9200
